@@ -16,6 +16,9 @@ const gitHubAuthProvider = new firebase.auth.GithubAuthProvider()
 // create new auth instance
 const auth = firebase.auth()
 
+// create new db instance
+const database = firebase.database()
+
 // listen to auth changes and store user data under known key
 auth.onAuthStateChanged(user => {
   if (user) localStorage.setItem('firebase_auth:user', JSON.stringify(user))
@@ -57,3 +60,22 @@ export const signOut = () => {
 
 // TODO: reset password
 // TODO: register new user
+
+/**
+ * Get reference to all messages
+ */
+export const getMessagesRef = () => {
+  return database.ref('messages')
+}
+
+/**
+ * Send new message with payload
+ */
+export const sendMessage = (payload) => {
+  return database.ref('messages').push({
+    payload: payload,
+    meta: {
+      displayname: getUser().displayName
+    }
+  })
+}
