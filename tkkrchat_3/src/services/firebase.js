@@ -69,13 +69,22 @@ export const getMessagesRef = () => {
 }
 
 /**
- * Send new message with payload
+ * Send new message
+ * @param {*} message 
  */
-export const sendMessage = (payload) => {
+export const sendMessage = (message) => {
   return database.ref('messages').push({
-    payload: payload,
+    payload: message,
     meta: {
       displayname: getUser().displayName
     }
   })
+}
+
+/**
+ * Delete a message
+ * @param {*} messageId 
+ */
+export const deleteMessage = (messageId) => {
+  return database.ref(`messages/${messageId}`).remove()
 }

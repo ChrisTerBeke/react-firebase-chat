@@ -22,7 +22,7 @@ class Messages extends React.Component {
   render() {
     return <div>
       <Compose />
-      {Object.keys(this.state.messages).map(key => <Message key={key} message={this.state.messages[key]} /> )}
+      {this.state.messages && Object.keys(this.state.messages).map(key => <Message key={key} id={key} message={this.state.messages[key]} /> )}
     </div>
   }
 }
