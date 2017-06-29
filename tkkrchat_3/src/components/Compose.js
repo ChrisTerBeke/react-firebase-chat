@@ -20,9 +20,18 @@ class Compose extends React.Component {
   }
 
   render() {
-    return <div>
-      <input type="text" ref="messageInput" onChange={this.changeMessage.bind(this)} />
-      <a onClick={this.sendMessage.bind(this)}>Send</a>
+    return <div className="message-compose">
+      <input
+        type="text"
+        ref="messageInput"
+        onChange={this.changeMessage.bind(this)}
+        className="message-input"
+        placeholder="Type a message..."
+      />
+      <a
+        onClick={this.sendMessage.bind(this)}
+        className="button button-send"
+      >Send</a>
     </div>
   }
 }

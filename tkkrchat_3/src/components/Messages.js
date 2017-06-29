@@ -20,7 +20,7 @@ class Messages extends React.Component {
   }
   
   render() {
-    return <div>
+    return <div className="messages">
       <Compose />
       {this.state.messages && Object.keys(this.state.messages).map(key => <Message key={key} id={key} message={this.state.messages[key]} /> )}
     </div>

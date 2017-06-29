@@ -76,6 +76,7 @@ export const sendMessage = (message) => {
   return database.ref('messages').push({
     payload: message,
     meta: {
+      timestamp: (new Date()).toISOString(),
       displayname: getUser().displayName
     }
   })

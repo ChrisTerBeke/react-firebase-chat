@@ -1,24 +1,66 @@
-.App {
-  text-align: center;
+.button {
+  padding: .5em 1em;
+  background-color: #fafafa;
+  display: inline-block;
+}
+  .button.button-send {
+    text-align: center;
+    font-size: 20px;
+    background-color: teal;
+    color: white;
+    float: right;
+  }
+  .button.button-login {
+    background-color: teal;
+    color: white;
+    font-size: 20px;
+  }
+  .button.button-logout {
+    background-color: orange;
+    font-size: 20px;
+  }
+
+.message-compose {
+  border-bottom: solid 2px silver;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+.message-input {
+  padding: .5em 1em;
+  display: inline-block;
+  margin: 0;
+  background-color: #fafafa;
+  border: none;
+  width: 76%;
+  font-size: 20px;
+  outline: none;
+  font-family: monospace;
 }
 
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+.message {
+  border-bottom: solid 2px silver;
+}
+
+.message .message-content {
+  float: left;
+  padding: 1em;
+  font-size: 24px;
+}
+
+.message .message-delete {
+  float: right;
+  padding: .5em;
+  margin: .5em;
+  background-color: red;
   color: white;
+  text-align: center;
+  width: 32px;
+  height: 32px;
 }
 
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.message .message-footer {
+  clear: both;
+  font-size: 12px;
+  display: block;
+  padding: .5em 1.5em;
+  background-color: #fafafa;
 }

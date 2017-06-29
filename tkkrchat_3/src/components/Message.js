@@ -10,16 +10,11 @@ class Message extends React.Component {
   }
 
   render() {
-    return <p>
-      { this.props.message.meta &&
-        <small>{this.props.message.meta.displayname}<br/></small>
-      }
-      {this.props.message.payload}
-      <a onClick={this.deleteMessage.bind(this)} style={{
-        color: 'red',
-        padding: '.5em'
-      }}>x</a>
-    </p>
+    return <div className="message">
+      <div className="message-content">{this.props.message.payload}</div>
+      <a onClick={this.deleteMessage.bind(this)} className="message-delete">x</a>
+      <span className="message-footer">Sent by <b>{this.props.message.meta.displayname}</b> at {new Date(this.props.message.meta.timestamp).toLocaleTimeString()}</span>
+    </div>
   }
 }
 

@@ -1,23 +1,22 @@
 import React from 'react'
 
 // services
-import {loginWithGitHub, isAuthenticated, signOut} from '../services/firebase'
+import {loginWithGitHub, signOut} from '../services/firebase'
 
 class Login extends React.Component {
 
-  state = {
-    isAuthenticated: isAuthenticated()
-  }
-
   render() {
-    return <div>
+    return <div style={{
+      textAlign: 'center',
+      padding: '1em'
+    }}>
       
-      { !this.state.isAuthenticated && // only show login button when we're not logged in yet
-        <a onClick={this.login.bind(this)}>Login with GitHub</a>
+      { !this.props.isAuthenticated && // only show login button when we're not logged in yet
+        <a onClick={this.login.bind(this)} className="button button-login">Login with GitHub</a>
       }
 
-      { this.state.isAuthenticated &&
-        <a onClick={this.signOut.bind(this)}>Logout</a>
+      { this.props.isAuthenticated &&
+        <a onClick={this.signOut.bind(this)} className="button button-logout">Logout</a>
       }
 
     </div>
@@ -25,21 +24,15 @@ class Login extends React.Component {
 
   login () {
     loginWithGitHub().then(response => {
-      this.setAuthenticated(true)
+      this.props.setAuthenticated(true)
     }).catch(err => {
-      this.setAuthenticated(false)
+      this.props.setAuthenticated(false)
     })
   }
 
   signOut () {
     signOut().then(() => {
-      this.setAuthenticated(false)
-    })
-  }
-
-  setAuthenticated (state) {
-    this.setState({
-      isAuthenticated: state
+      this.props.setAuthenticated(false)
     })
   }
 }
